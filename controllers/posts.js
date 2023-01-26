@@ -34,29 +34,15 @@ module.exports = {
 
       //media is stored on cloudinary - the above request responds with url to media and the media id that you will need when deleting content 
       await Post.create({
-        title: req.body.title,
+        from: req.body.from,
         image: result.secure_url,
         cloudinaryId: result.public_id,
-        caption: req.body.caption,
-        likes: 0,
+        note: req.body.note,
+        category: req.body.category,
         user: req.user.id,
       });
       console.log("Post has been added!");
       res.redirect("/profile");
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  likePost: async (req, res) => {
-    try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
