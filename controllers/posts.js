@@ -10,7 +10,7 @@ module.exports = {
       //Grabbing just the posts of the logged-in user
       const posts = await Post.find({ user: req.user.id });
       //Sending post data from mongodb and user data to ejs template
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      res.render("profile.ejs", { posts: posts, post: posts[0], user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -27,18 +27,29 @@ module.exports = {
       console.log(err);
     }
   },
+  getRandom: async (req, res) => {
+    try {
+      const [randomPost] = await Post.aggregate([ { $sample: { size: 1 } } ]);
+      res.send({ post: randomPost, user: req.user})
+    } catch (err) {
+      console.log(err)
+    }
+  },
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
+      let result
+      if (req.file) {
+        result = await cloudinary.uploader.upload(req.file.path);
+      }
 
-      //media is stored on cloudinary - the above request responds with url to media and the media id that you will need when deleting content 
+      //media is stored on cloudinary - the above request responds with url to media and the media id that you will need when deleting content
       await Post.create({
         from: req.body.from,
-        image: result.secure_url,
-        cloudinaryId: result.public_id,
+        image: result ? result.secure_url : null,
+        cloudinaryId: result ? result.public_id : null,
         note: req.body.note,
-        category: req.body.category,
+        category: req.body.category.split(", "),
         user: req.user.id,
       });
       console.log("Post has been added!");
