@@ -11,6 +11,8 @@ const { ensureAuth } = require("../middleware/auth");
 
 router.get("/random", ensureAuth, postsController.getRandom);
 
+router.get("/allposts", ensureAuth, postsController.getAll);
+
 //Enables user to create post w/ cloudinary for media uploads
 router.post("/createPost", upload.single("file"), postsController.createPost);
 

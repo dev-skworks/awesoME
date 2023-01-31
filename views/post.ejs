@@ -1,13 +1,28 @@
 <%- include('partials/header') -%>
-<div class="container">
+
+<div class="col-6">
+  <ul class="row list-unstyled">
+  <% for(var i=0; i<posts.length; i++) {%>
+    <li class="col-6 justify-content-between mt-5">
+      <a href="/post/<%= posts[i]._id%>">
+        <h2><%= posts[i].from%></h2>
+        <p><%= posts[i].note%></p>
+        <img class="img-fluid" src="<%= posts[i].image%>">
+      </a>
+    </li>
+  <% } %>
+  </ul>  
+</div>
+
+<!-- <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-6">
-      <h2><%= post.from %></h2>
-      <img class="img-fluid" src="<%= post.image%>" />
+      <h2><%= posts.from %></h2>
+      <img class="img-fluid" src="<%= posts.image%>" />
       <div class="row justify-content-between">
-        <%if(post.user == user.id){ %>
+        <%if(posts.user == user.id){ %>
         <form
-          action="/post/deletePost/<%= post.id %>?_method=DELETE"
+          action="/post/deletePost/<%= posts.id %>?_method=DELETE"
           method="POST"
           class="col-3"
         >
@@ -17,8 +32,8 @@
       </div>
     </div>
     <div class="col-3 mt-5">
-      <p><%= post.note %></p>
-    </div>
+      <p><%= posts.note %></p>
+    </div>   -->
 
     <div class="col-6 mt-5">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
