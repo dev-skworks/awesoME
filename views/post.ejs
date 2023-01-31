@@ -1,44 +1,54 @@
 <%- include('partials/header') -%>
 
-<div class="col-6">
-  <ul class="row list-unstyled">
-  <% for(var i=0; i<posts.length; i++) {%>
-    <li class="col-6 justify-content-between mt-5">
-      <a href="/post/<%= posts[i]._id%>">
-        <h2><%= posts[i].from%></h2>
-        <p><%= posts[i].note%></p>
-        <img class="img-fluid" src="<%= posts[i].image%>">
-      </a>
-    </li>
-  <% } %>
-  </ul>  
-</div>
-
-<!-- <div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
-      <h2><%= posts.from %></h2>
-      <img class="img-fluid" src="<%= posts.image%>" />
-      <div class="row justify-content-between">
-        <%if(posts.user == user.id){ %>
-        <form
-          action="/post/deletePost/<%= posts.id %>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
-        </form>
-        <%}%>
-      </div>
-    </div>
-    <div class="col-3 mt-5">
-      <p><%= posts.note %></p>
-    </div>   -->
-
+  <div class="container-fluid">
     <div class="col-6 mt-5">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
     </div>
+    <ul class="row list-unstyled">
+    <% for(var i=0; i<posts.length; i++) {%>
+      <li class="col-6 justify-content-between mt-5">
+        <div class="card">
+          <div class="card-header" id="date">
+            <%= posts[i].createdAt %>
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p id="postNote"><%= posts[i].note %></p>
+              <footer class="blockquote-footer"><span id="postFrom"><%= posts[i].from %></span></footer>
+            </blockquote>
+          </div>
+        </div>
+        <!-- <a href="/post/<%= posts[i]._id%>">
+          <h2><%= posts[i].from%></h2>
+          <p><%= posts[i].note%></p>
+          <img class="img-fluid" src="<%= posts[i].image%>">
+        </a> -->
+      </li>
+    <% } %>
+    </ul>  
   </div>
-</div>
 
+  <!-- <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-6">
+        <h2><%= posts.from %></h2>
+        <img class="img-fluid" src="<%= posts.image%>" />
+        <div class="row justify-content-between">
+          <%if(posts.user == user.id){ %>
+          <form
+            action="/post/deletePost/<%= posts.id %>?_method=DELETE"
+            method="POST"
+            class="col-3"
+          >
+            <button class="btn btn-primary fa fa-trash" type="submit"></button>
+          </form>
+          <%}%>
+        </div>
+      </div>
+      <div class="col-3 mt-5">
+        <p><%= posts.note %></p>
+      </div>   -->
+
+    </div>
+  </div>
 <%- include('partials/footer') -%>
