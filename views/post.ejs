@@ -16,6 +16,13 @@
               <p id="postNote"><%= posts[i].note %></p>
               <footer class="blockquote-footer"><span id="postFrom"><%= posts[i].from %></span></footer>
             </blockquote>
+            <form
+            action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
+            method="POST"
+            class="col-3"
+          >
+            <button class="btn btn-primary" type="submit">Delete</button>
+          </form>
           </div>
         </div>
         <!-- <a href="/post/<%= posts[i]._id%>">
