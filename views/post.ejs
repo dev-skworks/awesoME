@@ -16,13 +16,54 @@
               <p id="postNote"><%= posts[i].note %></p>
               <footer class="blockquote-footer"><span id="postFrom"><%= posts[i].from %></span></footer>
             </blockquote>
+            
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= i %>">
+              Edit
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop<%= i %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Post</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="mb-4">
+                      <form action="/post/editPost/<%= posts[i].id %>?_method=PUT" enctype="multipart/form-data" method="POST">
+                        <div class="mb-3">
+                          <label for="from" class="form-label">From</label>
+                          <input type="text" class="form-control" id="from" name="from" value="<%= posts[i].from %>">
+                        </div>
+                        <div class="mb-3">
+                          <label for="note" class="form-label">Note</label>
+                          <textarea class="form-control" id="note" name="note"><%= posts[i].note %></textarea>
+                        </div>
+                        <div class="mb-3">
+                          <label for="category" class="form-label">Category</label>
+                          <input type="text" class="form-control" id="category" name="category" value="<%= posts[i].category %>">
+                        </div>
+                        <div class="mb-3">
+                          <label for="imgUpload" class="form-label">Image</label>
+                          <input type="file" class="form-control" id="imageUpload" name="file">
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             <form
             action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
             method="POST"
             class="col-3"
-          >
+            >
             <button class="btn btn-primary" type="submit">Delete</button>
-          </form>
+            </form>
           </div>
         </div>
         <!-- <a href="/post/<%= posts[i]._id%>">

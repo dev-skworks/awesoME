@@ -16,6 +16,8 @@ router.get("/allposts", ensureAuth, postsController.getAll);
 //Enables user to create post w/ cloudinary for media uploads
 router.post("/createPost", upload.single("file"), postsController.createPost);
 
+router.put("/editPost/:id", upload.single("file"), postsController.editPost);
+
 //Enables user to delete post. In controller, uses POST model to delete post from MongoDB collection
 router.delete("/deletePost/:id", postsController.deletePost);
 

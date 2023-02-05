@@ -71,6 +71,26 @@ module.exports = {
       console.log(err);
     }
   },
+  editPost: async (req,res) => {
+    try {
+      console.log(req.params.id, req.body)
+      
+      await Post.findByIdAndUpdate(
+        req.params.id,
+        {
+          from: req.body.from,
+          note: req.body.note,
+          category: req.body.category.split(", ")
+        }
+      );
+      res.redirect("/post/allposts");
+
+    } catch (err) {
+      console.log(err);
+      res.redirect("/post/allposts");
+    }
+
+  },
   deletePost: async (req, res) => {
     try {
       // Find post by id
