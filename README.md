@@ -27,7 +27,7 @@ awesoME is a fullstack CRUD app for motivation and performance indicator trackin
 Clone the repo
 
 ```
-git clone 
+git clone https://github.com/sukh-singh-dev/awesoME.git
 ```
 
 `npm install`
