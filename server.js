@@ -57,8 +57,11 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/post", postRoutes);
 
-
 //Server Running
-connectDB().then(() => app.listen(process.env.PORT, () => {
-  console.log(`Server is running on ${process.env.PORT}, you better catch it!`);
-}));
+connectDB().then(() => {
+  app.listen(process.env.PORT, () => {
+    console.log(
+      `Server is running on ${process.env.PORT}, you better catch it!`
+    );
+  });
+});
