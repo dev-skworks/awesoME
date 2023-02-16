@@ -7,16 +7,22 @@
     <ul class="row list-unstyled">
     <% for(var i=0; i<posts.length; i++) {%>
       <li class="col-6 justify-content-between mt-5">
-        <div class="card">
+        <div class="card bg-warning text-dark">
           <div class="card-header" id="date">
             <%= posts[i].createdAt %>
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              <p id="postNote"><%= posts[i].note %></p>
+              <% var note = posts[i].note; %>
+              <% note = note && note.split('\r\n') %>
+              <% if (note) { %>
+                <% for(var j=0; j<note.length; j++) {%>
+                  <p><%= note[j] %></p>
+                <% } %>
+              <% } %>
               <footer class="blockquote-footer"><span id="postFrom"><%= posts[i].from %></span></footer>
             </blockquote>
-            
+          
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= i %>">
               Edit
@@ -25,7 +31,7 @@
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop<%= i %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content bg-dark text-white">
                   <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Post</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -60,7 +66,7 @@
             <form
             action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
             method="POST"
-            class="col-3"
+            class="col-3 mt-2"
             >
             <button class="btn btn-primary" type="submit">Delete</button>
             </form>

@@ -23,6 +23,7 @@ module.exports = {
       //Grabbing just the posts of the logged-in user
       const posts = await Post.find({ user: req.user.id });
       //Sending post data from mongodb and user data to ejs template
+      console.log({posts})
       res.render("post.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
@@ -43,6 +44,7 @@ module.exports = {
   getRandom: async (req, res) => {
     try {
       const [randomPost] = await Post.aggregate([ { $sample: { size: 1 } } ]);
+      console.log({randomPost})
       res.send({ post: randomPost, user: req.user})
     } catch (err) {
       console.log(err)

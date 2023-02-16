@@ -1,7 +1,7 @@
 {
-  "name": "fullstack-template",
+  "name": "awesoME",
   "version": "1.0.0",
-  "description": "Starter template for future projects",
+  "description": "Fullstack CRUD app for motivation/performance indicator tracking",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
