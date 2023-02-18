@@ -21,6 +21,9 @@
                 <% } %>
               <% } %>
               <footer class="blockquote-footer"><span id="postFrom"><%= posts[i].from %></span></footer>
+              <% if (posts[i].category) { %>  
+                <p>Categories: <%= posts[i].category.join(", ") %></p>
+              <% } %>
             </blockquote>
           
             <!-- Button trigger modal -->
@@ -49,7 +52,10 @@
                         </div>
                         <div class="mb-3">
                           <label for="category" class="form-label">Category</label>
-                          <input type="text" class="form-control" id="category" name="category" value="<%= posts[i].category %>">
+                          <% if (posts[i].category) { %>
+                            <% var categories = posts[i].category.join(", ") %>
+                          <% } %>
+                          <input type="text" class="form-control" id="category" name="category" value="<%= categories %>">
                         </div>
                         <div class="mb-3">
                           <label for="imgUpload" class="form-label">Image</label>
