@@ -1,60 +1,103 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row mt-5">
-      <div class="container">
-          <div class="container">
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="btn btn-primary">Logout</a>
-          </div>
+<div class="container mt-5">
+  <div class="container">
+    <div class="grid grid-rows-3 grid-flow-col md:grid-cols-4 lg:grid-cols-12">
+      <p class="lg:col-span-2"><strong>User Name</strong>: <%= user.userName %></p>
+      <p class="lg:col-span-2"><strong>Email</strong>: <%= user.email %></p>
+      <a href="/logout" class="btn btn-primary lg:col-span-2">Logout</a>
+    </div>
 
-          <div class="container mt-5">
-            <a class="btn btn-primary" href="/post/allposts">All Highlights</a>
-            <button type="button" class="btn btn-primary" id="getRandom">
-              Remind Me!
-            </button>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <div class="mt-5 gap-1.5 grid grid-rows-3 grid-flow-col md:grid-rows-1 md:grid-cols-4 md:grid-flow-row lg:grid-cols-12">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary lg:col-span-2"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
+        Add a Highlight
+      </button>
+      <a class="btn btn-primary lg:col-span-2" href="/post/allposts">All Highlights</a>
+      <button type="button" class="btn btn-primary lg:col-span-2" id="getRandom">
+        Remind Me!
+      </button>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
               Add a Highlight
-            </button>
-        </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content bg-dark">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Highlight</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-4">
+              <form
+                action="/post/createPost"
+                enctype="multipart/form-data"
+                method="POST"
+              >
+                <div class="mb-3">
+                  <label for="from" class="form-label">From</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="from"
+                    name="from"
+                  />
                 </div>
-                <div class="modal-body">
-                  <div class="mb-4">
-                    <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-                      <div class="mb-3">
-                          <label for="from" class="form-label">From</label>
-                          <input type="text" class="form-control" id="from" name="from">
-                      </div>
-                      <div class="mb-3">
-                        <label for="note" class="form-label">Note</label>
-                        <textarea class="form-control" id="note" name="note"></textarea>
-                      </div>
-                      <div class="mb-3">
-                        <label for="category" class="form-label">Category</label>
-                        <input type="text" class="form-control" id="category" name="category">
-                    </div>
-                      <div class="mb-3">
-                        <label for="imgUpload" class="form-label">Image</label>
-                        <input type="file" class="form-control" id="imageUpload" name="file">
-                      </div>
-                      <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-                    </form>
-                  </div>
+                <div class="mb-3">
+                  <label for="note" class="form-label">Note</label>
+                  <textarea
+                    class="form-control"
+                    id="note"
+                    name="note"
+                  ></textarea>
                 </div>
-              </div>
+                <div class="mb-3">
+                  <label for="category" class="form-label">Category</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="category"
+                    name="category"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="imgUpload" class="form-label">Image</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="imageUpload"
+                    name="file"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary" value="Upload">
+                  Submit
+                </button>
+              </form>
             </div>
           </div>
+        </div>
       </div>
-      <!-- <div class="col-6">
+    </div>
+    <!-- <div class="col-6">
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
@@ -66,27 +109,48 @@
         <% } %>
         </ul>  
       </div>   -->
-      
-      <div class="container mb-3">
-        <div class="container-fluid mt-5">
-          <% if(post) { %>
-            <div class="card bg-warning text-dark">
-              <div class="card-header" id="date">
-                <%= post.createdAt %>
-              </div>
-              <div class="card-body px-4 py-3">
-                <blockquote class="blockquote mb-0">
-                  <p id="postNote"><%= post.note %></p>
-                  <footer class="blockquote-footer mt-3"><span id="postFrom"><%= post.from %></span></footer>
-                  <p id="postCategory"><%= post.category %></p>
-                </blockquote>
-              </div>
-            </div>
-          <% } %>
+
+    <div class="flex mt-5 mb-3 max-w-6xl">
+        <% if(post) { %>
+        <div class="card bg-warning text-dark">
+          <div class="card-header text-base" id="date"><%= post.createdAt %></div>
+          <div class="card-body px-4 py-3">
+            <blockquote class="blockquote mb-0">
+              <p class="text-base" id="postNote"><%= post.note %></p>
+              <footer class="blockquote-footer mt-3">
+                <span id="postFrom"><%= post.from %></span>
+              </footer>
+              <p class="text-base" id="postCategory"><%= post.category %></p>
+            </blockquote>
+          </div>
         </div>
-      </div>
-      
+        <% } %>
     </div>
   </div>
+
+  <section class="relative isolate overflow-hidden bg-white rounded-md mb-4 py-24 px-6 sm:py-32 lg:px-8">
+    <div class="bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] absolute inset-0 -z-10 opacity-20"></div>
+    <div class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
+    <% if(post) { %>
+    <div class="mx-auto max-w-2xl lg:max-w-4xl">
+      <img class="mx-auto h-12" src="" alt="">
+      <figure class="mt-10">
+        <blockquote class="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+          <p id="newPostNote">“<%= post.note %>”</p>
+        </blockquote>
+        <figcaption class="mt-10">
+          <!-- <img class="mx-auto h-10 w-10 rounded-full" src="" alt=""> -->
+          <div class="mt-4 flex items-center justify-center space-x-3 text-base">
+            <div class="font-semibold text-gray-900" id="newPostFrom"><%= post.from %></div>
+            <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
+              <circle cx="1" cy="1" r="1" />
+            </svg>
+            <div class="text-gray-600" id="newPostCategory"><%= post.category %></div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+    <% } %>
+  </section>
+  <%- include('partials/footer') -%>
 </div>
-<%- include('partials/footer') -%>
