@@ -1,37 +1,38 @@
 <%- include('partials/header') -%>
 
 <main class="container">
-  <div class="row justify-content-center">
-    <section class="col-6 mt-5">
+  <div class="px-4">
+    <section class="mt-5">
       <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
       <div class="alert alert-danger"><%= el.msg %></div>
       <% }) %> <% } %> <% if (locals.messages.info) { %> <%
       messages.info.forEach( el => { %>
       <div class="alert alert-info"><%= el.msg %></div>
       <% }) %> <% } %>
-      <form action="/login" method="POST">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
+      <form class="gap-2.5 grid grid-rows-3 grid-flow-col md:grid-cols-9
+      lg:grid-cols-15" action="/login" method="POST">
+        <div class="md:col-start-3 md:col-span-5 lg:col-start-4 lg:col-span-3">
+          <label for="exampleInputEmail1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >Email address</label
           >
           <input
             type="email"
-            class="form-control"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name="email"
           />
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+        <div class="md:col-start-3 md:col-span-5 lg:col-start-4 lg:col-span-3">
+          <label for="exampleInputPassword1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
           <input
             type="password"
-            class="form-control"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             id="exampleInputPassword1"
             name="password"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="pt-2 md:col-start-4 md:col-span-3 lg:col-start-5 lg:col-span-1"><button type="submit" class="w-full py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Submit</button></div>
       </form>
     </section>
   </div>

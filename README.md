@@ -51,6 +51,7 @@ git clone https://github.com/sukh-singh-dev/awesoME.git
 
 ## Optimizations and roadmap
 
+- [ ] UI Overhaul to improve the look, readability and accessibility of the app
 - [ ] Create a filter feature that allows the user to filter highlights using categories
 - [ ] Make a carousel style section that stores randomly pulled highlights
 - [ ] Add pagination to the carousel style section to allow navigating through the random highlights

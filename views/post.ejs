@@ -1,114 +1,128 @@
 <%- include('partials/header') -%>
 
-  <div class="container-fluid">
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
+  <div class="p-5">
+    <div class="mb-4">
+      <div class="mt-5 md:w-1/2 md:mx-auto">
+        <a href="/profile"><button type="button" class="w-full py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ">Return to Profile</button></a>
+      </div>
     </div>
-    <ul class="row list-unstyled">
-    <% for(var i=0; i<posts.length; i++) {%>
-      <li class="col-6 justify-content-between mt-5">
-        <div class="card bg-warning text-dark">
-          <div class="card-header" id="date">
-            <%= posts[i].createdAt %>
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <% var note = posts[i].note; %>
-              <% note = note && note.split('\r\n') %>
-              <% if (note) { %>
-                <% for(var j=0; j<note.length; j++) {%>
-                  <p><%= note[j] %></p>
-                <% } %>
-              <% } %>
-              <footer class="blockquote-footer"><span id="postFrom"><%= posts[i].from %></span></footer>
-              <% if (posts[i].category) { %>  
-                <p>Categories: <%= posts[i].category.join(", ") %></p>
-              <% } %>
-            </blockquote>
-          
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= i %>">
-              Edit
-            </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop<%= i %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content bg-dark text-white">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Highlight</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="lg:px-30">
+      <% for(var i=0; i<posts.length; i++) {%>
+        <section class="relative isolate overflow-hidden bg-white rounded-md mb-8 py-8 px-3">
+          <div
+            class="bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] absolute inset-0 -z-10 opacity-20">
+          </div>
+          <div
+            class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center">
+          </div>
+          <div class="mx-auto max-w-2xl lg:max-w-4xl">
+            <img class="mx-auto" src="" alt="">
+            <figure class="mt-5">
+              <blockquote class="text-center text-md p-2 font-semibold leading-8 text-gray-900 md:text-xl sm:leading-9">
+                <% var note=posts[i].note; %>
+                  <% note=note && note.split('\r\n') %>
+                    <% if (note) { %>
+                      <% for(var j=0; j<note.length; j++) {%>
+                        <p>
+                          <%= note[j] %>
+                        </p>
+                      <% } %>
+                    <% } %>
+              </blockquote>
+              <figcaption class="mt-10">
+                <!-- <img class="mx-auto h-10 w-10 rounded-full" src="" alt=""> -->
+                <div class="mt-4 flex flex-col items-center justify-center space-x-3 text-base lg:flex-row">
+                  <div class="font-semibold text-gray-900" id="newPostFrom">
+                    <%= posts[i].from %>
                   </div>
-                  <div class="modal-body">
-                    <div class="mb-4">
-                      <form action="/post/editPost/<%= posts[i].id %>?_method=PUT" enctype="multipart/form-data" method="POST">
-                        <div class="mb-3">
-                          <label for="from" class="form-label">From</label>
-                          <input type="text" class="form-control" id="from" name="from" value="<%= posts[i].from %>">
-                        </div>
-                        <div class="mb-3">
-                          <label for="note" class="form-label">Note</label>
-                          <textarea class="form-control" id="note" name="note"><%= posts[i].note %></textarea>
-                        </div>
-                        <div class="mb-3">
-                          <label for="category" class="form-label">Category</label>
-                          <% if (posts[i].category) { %>
-                            <% var categories = posts[i].category.join(", ") %>
-                          <% } %>
-                          <input type="text" class="form-control" id="category" name="category" value="<%= categories %>">
-                        </div>
-                        <div class="mb-3">
-                          <label for="imgUpload" class="form-label">Image</label>
-                          <input type="file" class="form-control" id="imageUpload" name="file">
-                        </div>
-                        <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-                      </form>
-                    </div>
-                  </div>
+                  <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900 hidden lg:block">
+                    <circle cx="1" cy="1" r="1" />
+                  </svg>
+                  <% if (posts[i].category) { %>
+                    <div class="text-gray-600 text-center md:text-left" id="newPostCategory">Categories: <%= posts[i].category.join(", ") %></div>
+                  <% } %>
                 </div>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="mt-5 gap-1.5 grid grid-rows-2 grid-flow-col md:grid-rows-1 md:grid-cols-4 md:grid-flow-row
+                        lg:grid-cols-12">
+                        <!-- Modal toggle -->
+                        <button data-modal-target="edit-modal<%= i %>" data-modal-toggle="edit-modal<%= i %>"
+                          class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:col-start-2 lg:col-start-6 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                          type="button">
+                          Edit
+                        </button>
+                        <form class="block" action="/post/deletePost/<%= posts[i].id %>?_method=DELETE" method="POST">
+                          <button
+                            class="block w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="submit">
+                            Delete
+                          </button>
+                        </form>
+          </div>
+        </section>
+        <!-- Main modal -->
+        <div id="edit-modal<%= i %>" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+          class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+          <div class="relative w-full h-full max-w-md md:h-auto">
+            <!-- Modal content -->
+            <div class="relative bg-dark rounded-lg shadow dark:bg-gray-700">
+              <button type="button"
+                class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                data-modal-hide="edit-modal<%= i %>">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+              <div class="px-6 py-6 lg:px-8">
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit Highlight</h3>
+                <form class="space-y-6" action="/post/editPost/<%= posts[i].id %>?_method=PUT" enctype="multipart/form-data"
+                  method="POST">
+                  <div>
+                    <label for="from" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">From</label>
+                    <input type="text" name="from" id="from"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      value="<%= posts[i].from %>" required>
+                  </div>
+                  <div>
+                    <label for="note" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>
+                    <textarea type="text" name="note" id="note"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      required><%= posts[i].note %></textarea>
+                  </div>
+                  <div>
+                    <label for="category"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                    <% if (posts[i].category) { %>
+                      <% var categories=posts[i].category.join(", ") %>
+                    <% } %>
+                    <input type="text" name="category" id="category"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        value="<%= categories %>" required>
+                  </div>
+                  <!-- <div>
+                    <label for="imgUpload"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                    <input type="file" name="file" id="imgUpload"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                  </div> -->
+                  <button type="submit"
+                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    value="Upload">Save</button>
+                </form>
               </div>
             </div>
-            
-            <form
-            action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
-            method="POST"
-            class="col-3 mt-2"
-            >
-            <button class="btn btn-primary" type="submit">Delete</button>
-            </form>
           </div>
         </div>
-        <!-- <a href="/post/<%= posts[i]._id%>">
-          <h2><%= posts[i].from%></h2>
-          <p><%= posts[i].note%></p>
-          <img class="img-fluid" src="<%= posts[i].image%>">
-        </a> -->
-      </li>
-    <% } %>
-    </ul>  
-  </div>
-
-  <!-- <div class="container">
-    <div class="row justify-content-center mt-5">
-      <div class="col-6">
-        <h2><%= posts.from %></h2>
-        <img class="img-fluid" src="<%= posts.image%>" />
-        <div class="row justify-content-between">
-          <%if(posts.user == user.id){ %>
-          <form
-            action="/post/deletePost/<%= posts.id %>?_method=DELETE"
-            method="POST"
-            class="col-3"
-          >
-            <button class="btn btn-primary fa fa-trash" type="submit"></button>
-          </form>
-          <%}%>
-        </div>
-      </div>
-      <div class="col-3 mt-5">
-        <p><%= posts.note %></p>
-      </div>   -->
-
+      <% } %>
     </div>
+
   </div>
+
 <%- include('partials/footer') -%>
