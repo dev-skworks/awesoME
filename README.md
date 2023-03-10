@@ -47,7 +47,12 @@ git clone https://github.com/dev-skworks/awesoME.git
 
 #### Run
 
+`npm run build`
 `npm start`
+
+##### Run in dev mode
+
+`npm run dev`
 
 ## Optimizations and roadmap
 
