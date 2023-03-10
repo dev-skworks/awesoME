@@ -1,5 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = {
   getProfile: async (req, res) => { 
@@ -43,7 +45,10 @@ module.exports = {
   },
   getRandom: async (req, res) => {
     try {
-      const [randomPost] = await Post.aggregate([ { $sample: { size: 1 } } ]);
+      console.log(req.user.id)
+      const [randomPost] = await Post.aggregate([ { $match: { user: ObjectId(req.user.id) } }, { $sample: { size: 1 } } ]);
+      // const randomPosts = await Post.find({ user: req.user.id });
+      // const randomPost = randomPosts[Math.floor(Math.random()*randomPosts.length)];
       console.log({randomPost})
       res.send({ post: randomPost, user: req.user})
     } catch (err) {
