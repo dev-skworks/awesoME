@@ -31,24 +31,22 @@ module.exports = {
       console.log(err);
     }
   },
-  getPost: async (req, res) => {
-    try {
-      //id parameter comes from the post routes
-      //router.get("/:id", ensureAuth, postsController.getPost);
-      //http://localhost:2121/post/631a7f59a3e56acfc7da286f
-      //id === 631a7f59a3e56acfc7da286f
-      const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user});
-    } catch (err) {
-      console.log(err);
-    }
-  },
+  // getPost: async (req, res) => {
+  //   try {
+  //     //id parameter comes from the post routes
+  //     //router.get("/:id", ensureAuth, postsController.getPost);
+  //     //http://localhost:2121/post/631a7f59a3e56acfc7da286f
+  //     //id === 631a7f59a3e56acfc7da286f
+  //     const post = await Post.findById(req.params.id);
+  //     res.render("post.ejs", { post: post, user: req.user});
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
   getRandom: async (req, res) => {
     try {
       console.log(req.user.id)
       const [randomPost] = await Post.aggregate([ { $match: { user: ObjectId(req.user.id) } }, { $sample: { size: 1 } } ]);
-      // const randomPosts = await Post.find({ user: req.user.id });
-      // const randomPost = randomPosts[Math.floor(Math.random()*randomPosts.length)];
       console.log({randomPost})
       res.send({ post: randomPost, user: req.user})
     } catch (err) {
