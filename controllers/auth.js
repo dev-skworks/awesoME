@@ -11,6 +11,15 @@ exports.getLogin = (req, res) => {
   });
 };
 
+exports.getDemo = (req, res) => {
+  if (req.user) {
+    return res.redirect("/profile");
+  }
+  res.render("demo", {
+    title: "Demo Login",
+  });
+};
+
 exports.postLogin = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))

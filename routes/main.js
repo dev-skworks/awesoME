@@ -11,6 +11,7 @@ router.get("/profile", ensureAuth, postsController.getProfile);
 
 //Routes for user login/signup
 router.get("/login", authController.getLogin);
+router.get("/demo", authController.getDemo);
 router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
