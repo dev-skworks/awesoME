@@ -12,9 +12,6 @@ exports.getLogin = (req, res) => {
 };
 
 exports.getDemo = (req, res) => {
-  if (req.user) {
-    return res.redirect("/profile");
-  }
   res.render("demo", {
     title: "Demo Login",
   });

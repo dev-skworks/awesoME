@@ -39,7 +39,7 @@ app.use(methodOverride("_method"));
 // Setup Sessions - stored in MongoDB
 app.use(
   session({
-    secret: "love respect",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
