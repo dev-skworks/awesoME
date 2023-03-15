@@ -4,17 +4,17 @@
     <div class="grid grid-rows-3 grid-flow-col md:grid-cols-4 lg:grid-cols-12">
       <p class="lg:col-span-2"><strong>Username</strong>: <%= user.userName %></p>
       <p class="lg:col-span-2"><strong>Email</strong>: <%= user.email %></p>
-      <a href="/logout"><button type="button" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Logout</button></a>
+      <a href="/logout"><button type="button" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">Logout</button></a>
     </div>
 
     <div class="my-5 gap-1.5 grid grid-rows-3 grid-flow-col md:grid-rows-1 md:grid-cols-4 md:grid-flow-row lg:grid-cols-12">
       <button data-modal-target="add-modal" data-modal-toggle="add-modal"
-        class="w-full py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 lg:col-span-2"
+        class="w-full py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2"
         type="button">
         Add a Highlight
       </button>
-      <a class="lg:col-span-2" href="/post/allposts"><button type="button" class="w-full py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">All Highlights</button></a>
-      <button type="button" class="w-full py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 lg:col-span-2" id="getRandom">
+      <a class="lg:col-span-2" href="/post/allposts"><button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">All Highlights</button></a>
+      <button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2" id="getRandom">
         Remind Me!
       </button>
     </div>
@@ -24,7 +24,7 @@
       class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
       <div class="relative w-full h-full max-w-md md:h-auto">
         <!-- Modal content -->
-        <div class="relative bg-gray-200 rounded-lg shadow dark:bg-gray-700">
+        <div class="relative bg-gray-200 rounded-lg shadow dark:bg-gray-800">
           <button type="button"
             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
             data-modal-hide="add-modal">
@@ -47,8 +47,8 @@
               </div>
               <div>
                 <label for="note" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>
-                <textarea type="text" name="note" id="note"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                <textarea name="note" id="note"
+                  class="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                   required></textarea>
               </div>
               <div>
@@ -60,12 +60,12 @@
               </div>
               <div>
                 <label for="imgUpload"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image (Optional)</label>
                 <input type="file" name="file" id="imgUpload"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
               </div>
               <button type="submit"
-                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="w-full text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
                 value="Upload">Submit</button>
             </form>
           </div>
@@ -73,24 +73,22 @@
       </div>
     </div>
 
-  <section class="relative isolate overflow-hidden bg-white rounded-md mb-4 py-12 px-3">
-    <div class="bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] absolute inset-0 -z-10 opacity-20"></div>
-    <div class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
+  <section class="bg-dark-main border-y border-dashed border-secondary mb-4 py-12 px-3">
     <% if(post) { %>
     <div class="mx-auto max-w-2xl lg:max-w-4xl">
       <img class="mx-auto" src="" alt="">
       <figure class="mt-5">
-        <blockquote class="text-center text-md p-2 font-semibold leading-8 text-gray-900 md:text-xl sm:leading-9">
+        <blockquote class="text-center text-md p-2 font-light leading-8 text-highlight-text md:text-xl sm:leading-9">
           <p id="newPostNote">“<%= post.note %>”</p>
         </blockquote>
         <figcaption class="mt-10">
           <!-- <img class="mx-auto h-10 w-10 rounded-full" src="" alt=""> -->
           <div class="mt-4 flex flex-col items-center justify-center space-x-3 text-base lg:flex-row">
-            <div class="font-semibold text-gray-900" id="newPostFrom"><%= post.from %></div>
-            <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900 hidden lg:block">
+            <div class="font-semibold text-highlight-text" id="newPostFrom"><%= post.from %></div>
+            <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-highlight-text hidden lg:block">
               <circle cx="1" cy="1" r="1" />
             </svg>
-            <div class="text-gray-600 text-center md:text-left" id="newPostCategory">Categories: <%= post.category %></div>
+            <div class="text-highlight-text text-center md:text-left" id="newPostCategory">Categories: <%= post.category %></div>
           </div>
         </figcaption>
       </figure>
