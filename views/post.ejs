@@ -3,23 +3,17 @@
   <div class="p-5">
     <div class="mb-4">
       <div class="mt-5 md:w-1/2 md:mx-auto">
-        <a href="/profile"><button type="button" class="w-full py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ">Return to Profile</button></a>
+        <a href="/profile"><button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main ">Return to Profile</button></a>
       </div>
     </div>
 
     <div class="lg:px-30">
       <% for(var i=0; i<posts.length; i++) {%>
-        <section class="relative isolate overflow-hidden bg-white rounded-md mb-8 py-8 px-3">
-          <div
-            class="bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] absolute inset-0 -z-10 opacity-20">
-          </div>
-          <div
-            class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center">
-          </div>
+        <section class="bg-dark-main border border-primary rounded-md mb-4 py-12 px-3">
           <div class="mx-auto max-w-2xl lg:max-w-4xl">
             <img class="mx-auto" src="" alt="">
             <figure class="mt-5">
-              <blockquote class="text-center text-md p-2 font-semibold leading-8 text-gray-900 md:text-xl sm:leading-9">
+              <blockquote class="text-center text-md p-2 font-light leading-8 text-highlight-text md:text-xl sm:leading-9">
                 <% var note=posts[i].note; %>
                   <% note=note && note.split('\r\n') %>
                     <% if (note) { %>
@@ -33,14 +27,14 @@
               <figcaption class="mt-10">
                 <!-- <img class="mx-auto h-10 w-10 rounded-full" src="" alt=""> -->
                 <div class="mt-4 flex flex-col items-center justify-center space-x-3 text-base lg:flex-row">
-                  <div class="font-semibold text-gray-900" id="newPostFrom">
+                  <div class="font-semibold text-highlight-text" id="newPostFrom">
                     <%= posts[i].from %>
                   </div>
-                  <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900 hidden lg:block">
+                  <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-highlight-text hidden lg:block">
                     <circle cx="1" cy="1" r="1" />
                   </svg>
                   <% if (posts[i].category) { %>
-                    <div class="text-gray-600 text-center md:text-left" id="newPostCategory">Categories: <%= posts[i].category.join(", ") %></div>
+                    <div class="text-highlight-text text-center md:text-left" id="newPostCategory">Categories: <%= posts[i].category.join(", ") %></div>
                   <% } %>
                 </div>
               </figcaption>
@@ -50,13 +44,13 @@
                         lg:grid-cols-12">
                         <!-- Modal toggle -->
                         <button data-modal-target="edit-modal<%= i %>" data-modal-toggle="edit-modal<%= i %>"
-                          class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:col-start-2 lg:col-start-6 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                          class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main md:col-start-2 lg:col-start-6"
                           type="button">
                           Edit
                         </button>
                         <form class="block" action="/post/deletePost/<%= posts[i].id %>?_method=DELETE" method="POST">
                           <button
-                            class="block w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="block w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
                             type="submit">
                             Delete
                           </button>
@@ -68,7 +62,7 @@
           class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
           <div class="relative w-full h-full max-w-md md:h-auto">
             <!-- Modal content -->
-            <div class="relative bg-gray-200 rounded-lg shadow dark:bg-gray-700">
+            <div class="relative bg-gray-200 rounded-lg shadow dark:bg-gray-800">
               <button type="button"
                 class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                 data-modal-hide="edit-modal<%= i %>">
@@ -92,7 +86,7 @@
                   </div>
                   <div>
                     <label for="note" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>
-                    <textarea type="text" name="note" id="note"
+                    <textarea rows="8" name="note" id="note"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       required><%= posts[i].note %></textarea>
                   </div>
@@ -113,7 +107,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                   </div> -->
                   <button type="submit"
-                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
                     value="Upload">Save</button>
                 </form>
               </div>
