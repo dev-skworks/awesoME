@@ -3,17 +3,17 @@
   <div class="p-5">
     <div class="mb-4">
       <div class="mt-5 md:w-1/2 md:mx-auto">
-        <a href="/profile"><button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main ">Return to Profile</button></a>
+        <a href="/profile"><button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-light-main bg-primary-light rounded-lg hover:text-highlight-text-light focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main ">Return to Profile</button></a>
       </div>
     </div>
 
     <div class="lg:px-30">
       <% for(var i=0; i<posts.length; i++) {%>
-        <section class="bg-dark-main border border-primary rounded-md mb-4 py-12 px-3">
+        <section class="bg-light-main border border-secondary-light rounded-md mb-4 py-12 px-3 dark:bg-dark-main dark:border-primary">
           <div class="mx-auto max-w-2xl lg:max-w-4xl">
             <img class="mx-auto" src="" alt="">
             <figure class="mt-5">
-              <blockquote class="text-center text-md p-2 font-light leading-8 text-highlight-text md:text-xl sm:leading-9">
+              <blockquote class="text-center text-md p-2 font-light leading-8 text-highlight-text-light dark:text-highlight-text md:text-xl sm:leading-9">
                 <% var note=posts[i].note; %>
                   <% note=note && note.split('\r\n') %>
                     <% if (note) { %>
@@ -27,14 +27,14 @@
               <figcaption class="mt-10">
                 <!-- <img class="mx-auto h-10 w-10 rounded-full" src="" alt=""> -->
                 <div class="mt-4 flex flex-col items-center justify-center space-x-3 text-base lg:flex-row">
-                  <div class="font-semibold text-highlight-text" id="newPostFrom">
+                  <div class="font-semibold text-highlight-text-light dark:text-highlight-text" id="newPostFrom">
                     <%= posts[i].from %>
                   </div>
                   <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-highlight-text hidden lg:block">
                     <circle cx="1" cy="1" r="1" />
                   </svg>
                   <% if (posts[i].category) { %>
-                    <div class="text-highlight-text text-center md:text-left" id="newPostCategory">Categories: <%= posts[i].category.join(", ") %></div>
+                    <div class="text-highlight-text-light text-center dark:text-highlight-text md:text-left" id="newPostCategory">Categories: <%= posts[i].category.join(", ") %></div>
                   <% } %>
                 </div>
               </figcaption>
@@ -44,13 +44,13 @@
                         lg:grid-cols-12">
                         <!-- Modal toggle -->
                         <button data-modal-target="edit-modal<%= i %>" data-modal-toggle="edit-modal<%= i %>"
-                          class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main md:col-start-2 lg:col-start-6"
+                          class="block text-light-main bg-primary-light font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:text-highlight-text-light dark:bg-primary dark:text-dark-main dark:hover:text-light-main md:col-start-2 lg:col-start-6"
                           type="button">
                           Edit
                         </button>
                         <form class="block" action="/post/deletePost/<%= posts[i].id %>?_method=DELETE" method="POST">
                           <button
-                            class="block w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
+                            class="block w-full text-light-main bg-primary-light hover:text-highlight-text-light font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
                             type="submit">
                             Delete
                           </button>
@@ -107,7 +107,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                   </div> -->
                   <button type="submit"
-                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
+                    class="w-full text-light-main bg-primary-light hover:text-highlight-text-light font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
                     value="Upload">Save</button>
                 </form>
               </div>

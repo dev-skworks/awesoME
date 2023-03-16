@@ -4,17 +4,17 @@
     <div class="grid grid-rows-3 grid-flow-col md:grid-cols-4 lg:grid-cols-12">
       <p class="lg:col-span-2"><strong>Username</strong>: <%= user.userName %></p>
       <p class="lg:col-span-2"><strong>Email</strong>: <%= user.email %></p>
-      <a href="/logout"><button type="button" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">Logout</button></a>
+      <a href="/logout"><button type="button" class="py-2.5 px-5 text-sm font-medium text-light-main bg-primary-light rounded-lg hover:text-highlight-text-light focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">Logout</button></a>
     </div>
 
     <div class="my-5 gap-1.5 grid grid-rows-3 grid-flow-col md:grid-rows-1 md:grid-cols-4 md:grid-flow-row lg:grid-cols-12">
       <button data-modal-target="add-modal" data-modal-toggle="add-modal"
-        class="w-full py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2"
+        class="w-full py-2.5 px-5 text-sm font-medium text-light-main bg-primary-light rounded-lg hover:text-highlight-text-light focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2"
         type="button">
         Add a Highlight
       </button>
-      <a class="lg:col-span-2" href="/post/allposts"><button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">All Highlights</button></a>
-      <button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2" id="getRandom">
+      <a class="lg:col-span-2" href="/post/allposts"><button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-light-main bg-primary-light rounded-lg hover:text-highlight-text-light focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">All Highlights</button></a>
+      <button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-light-main bg-primary-light rounded-lg hover:text-highlight-text-light focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2" id="getRandom">
         Remind Me!
       </button>
     </div>
@@ -65,7 +65,7 @@
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
               </div>
               <button type="submit"
-                class="w-full text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
+                class="w-full text-light-main bg-primary-light hover:text-highlight-text-light font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
                 value="Upload">Submit</button>
             </form>
           </div>
@@ -73,22 +73,22 @@
       </div>
     </div>
 
-  <section class="bg-dark-main border-y border-dashed border-secondary mb-4 py-12 px-3">
+  <section class="bg-light-main border-y border-dashed border-secondary-light mb-4 py-12 px-3 dark:bg-dark-main dark:border-secondary">
     <% if(post) { %>
     <div class="mx-auto max-w-2xl lg:max-w-4xl">
       <img class="mx-auto" src="" alt="">
       <figure class="mt-5">
-        <blockquote class="text-center text-md p-2 font-light leading-8 text-highlight-text md:text-xl sm:leading-9">
+        <blockquote class="text-center text-md p-2 font-light leading-8 text-highlight-text-light dark:text-highlight-text md:text-xl sm:leading-9">
           <p id="newPostNote">“<%= post.note %>”</p>
         </blockquote>
         <figcaption class="mt-10">
           <!-- <img class="mx-auto h-10 w-10 rounded-full" src="" alt=""> -->
           <div class="mt-4 flex flex-col items-center justify-center space-x-3 text-base lg:flex-row">
-            <div class="font-semibold text-highlight-text" id="newPostFrom"><%= post.from %></div>
+            <div class="font-semibold text-highlight-text-light dark:text-highlight-text" id="newPostFrom"><%= post.from %></div>
             <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-highlight-text hidden lg:block">
               <circle cx="1" cy="1" r="1" />
             </svg>
-            <div class="text-highlight-text text-center md:text-left" id="newPostCategory">Categories: <%= post.category %></div>
+            <div class="text-highlight-text-light text-center dark:text-highlight-text md:text-left" id="newPostCategory">Categories: <%= post.category %></div>
           </div>
         </figcaption>
       </figure>
