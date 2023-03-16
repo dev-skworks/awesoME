@@ -12,7 +12,14 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/dist/output.css">  
+    <link rel="stylesheet" href="/css/dist/output.css">
+    <script>
+      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+      } else {
+          document.documentElement.classList.remove('dark')
+      }
+    </script>  
   </head>
   <body class="bg-light-main text-heading-light dark:bg-dark-main dark:text-light-main">
     <div class="container mt-5 mx-auto">
