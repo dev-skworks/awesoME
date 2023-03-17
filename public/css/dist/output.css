@@ -1676,11 +1676,6 @@ input:checked + .toggle-bg {
   color: rgb(27 45 69 / var(--tw-text-opacity));
 }
 
-.text-light-main {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 254 / var(--tw-text-opacity));
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1763,6 +1758,11 @@ input:checked + .toggle-bg {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-primary-light-accent:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(61 255 226 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1781,16 +1781,6 @@ input:checked + .toggle-bg {
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
-.hover\:text-heading-light:hover {
-  --tw-text-opacity: 1;
-  color: rgb(0 33 77 / var(--tw-text-opacity));
-}
-
-.hover\:text-highlight-text-light:hover {
-  --tw-text-opacity: 1;
-  color: rgb(27 45 69 / var(--tw-text-opacity));
 }
 
 .focus\:z-10:focus {

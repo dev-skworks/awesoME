@@ -4,17 +4,17 @@
     <div class="grid grid-rows-3 grid-flow-col md:grid-cols-4 lg:grid-cols-12">
       <p class="lg:col-span-2"><strong>Username</strong>: <%= user.userName %></p>
       <p class="lg:col-span-2"><strong>Email</strong>: <%= user.email %></p>
-      <a href="/logout"><button type="button" class="py-2.5 px-5 text-sm font-medium text-light-main bg-primary-light rounded-lg hover:text-highlight-text-light focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">Logout</button></a>
+      <a href="/logout"><button type="button" class="py-2.5 px-5 text-sm font-medium text-highlight-text-light bg-primary-light rounded-lg hover:bg-primary-light-accent focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">Logout</button></a>
     </div>
 
     <div class="my-5 gap-1.5 grid grid-rows-3 grid-flow-col md:grid-rows-1 md:grid-cols-4 md:grid-flow-row lg:grid-cols-12">
       <button data-modal-target="add-modal" data-modal-toggle="add-modal"
-        class="w-full py-2.5 px-5 text-sm font-medium text-light-main bg-primary-light rounded-lg hover:text-highlight-text-light focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2"
+        class="w-full py-2.5 px-5 text-sm font-medium text-highlight-text-light bg-primary-light rounded-lg hover:bg-primary-light-accent focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2"
         type="button">
         Add a Highlight
       </button>
-      <a class="lg:col-span-2" href="/post/allposts"><button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-light-main bg-primary-light rounded-lg hover:text-highlight-text-light focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">All Highlights</button></a>
-      <button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-light-main bg-primary-light rounded-lg hover:text-highlight-text-light focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2" id="getRandom">
+      <a class="lg:col-span-2" href="/post/allposts"><button type="button" class="w-full py-2.5 px-5 text-sm font-medium text-highlight-text-light bg-primary-light rounded-lg hover:bg-primary-light-accent focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main">All Highlights</button></a>
+      <button type="button" class="w-full py-2.5 px-5 text-sm font-medium bg-primary-light text-highlight-text-light rounded-lg hover:bg-primary-light-accent focus:z-10 dark:bg-primary dark:text-dark-main dark:hover:text-light-main lg:col-span-2" id="getRandom">
         Remind Me!
       </button>
     </div>
@@ -47,7 +47,7 @@
               </div>
               <div>
                 <label for="note" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>
-                <textarea name="note" id="note"
+                <textarea name="note" id="note" rows="8"
                   class="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                   required></textarea>
               </div>
@@ -58,14 +58,14 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     required>
               </div>
-              <div>
+              <!-- <div>
                 <label for="imgUpload"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image (Optional)</label>
                 <input type="file" name="file" id="imgUpload"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-              </div>
+              </div> -->
               <button type="submit"
-                class="w-full text-light-main bg-primary-light hover:text-highlight-text-light font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
+                class="w-full text-highlight-text-light bg-primary-light hover:bg-primary-light-accent font-medium rounded-lg text-sm mb-4 px-5 py-2.5 text-center dark:bg-primary dark:text-dark-main dark:hover:text-light-main"
                 value="Upload">Submit</button>
             </form>
           </div>

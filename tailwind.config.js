@@ -11,6 +11,7 @@ module.exports = {
         'highlight-text': '#a7a9be',
         'heading-light': '#00214d',
         'primary-light': '#00ebc7',
+        'primary-light-accent': '#3dffe2',
         'secondary-light': '#ff5470',
         'highlight-text-light': '#1b2d45'
       }
